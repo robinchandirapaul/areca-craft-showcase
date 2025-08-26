@@ -48,7 +48,7 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="lg">
-                <Link to="/products">Shop Products</Link>
+                <Link to="/products">View Products</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-nature-primary">
                 <Link to="/about">Learn More</Link>
@@ -128,14 +128,14 @@ const Home = () => {
       <section className="py-20 bg-gradient-to-r from-nature-primary to-leaf-green">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
-            Ready to Make the Switch?
+            Explore Our Sustainable Range
           </h2>
           <p className="text-xl text-primary-foreground/90 mb-8">
             Join thousands of conscious consumers who have chosen sustainable alternatives. 
-            Your planet will thank you.
+            Discover our eco-friendly product range.
           </p>
           <Button asChild size="lg" className="bg-primary-foreground text-nature-primary hover:bg-primary-foreground/90">
-            <Link to="/products">Shop Now</Link>
+            <Link to="/products">View Products</Link>
           </Button>
         </div>
       </section>
