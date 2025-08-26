@@ -52,6 +52,21 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Custom nature-themed colors
+				nature: {
+					primary: 'hsl(var(--nature-primary))',
+					secondary: 'hsl(var(--nature-secondary))',
+				},
+				earth: {
+					brown: 'hsl(var(--earth-brown))',
+				},
+				leaf: {
+					green: 'hsl(var(--leaf-green))',
+				},
+				sage: {
+					green: 'hsl(var(--sage-green))',
+				},
+				cream: 'hsl(var(--cream))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
