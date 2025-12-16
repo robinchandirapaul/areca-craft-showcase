@@ -1,0 +1,6 @@
+.main-logo {
+    height: 20%;
+    width: 20%;
+    will-change: filter;
+    transition: filter 300ms;
+}

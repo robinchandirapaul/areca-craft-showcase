@@ -29,22 +29,47 @@ const Contact = () => {
     inquiryType: "general"
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("http://localhost/contact-api/contact.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        subject: "",
+        message: "",
+        inquiryType: "general"
+      });
+    } else {
+      toast({
+        title: "Error",
+        description: result.message || "Something went wrong.",
+      });
+    }
+  } catch (error) {
     toast({
-      title: "Message Sent!",
-      description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      title: "Error",
+      description: "Unable to reach the server.",
     });
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      subject: "",
-      message: "",
-      inquiryType: "general"
-    });
-  };
+  }
+};
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -245,65 +270,6 @@ const Contact = () => {
                   </Card>
                 ))}
               </div>
-
-              {/* Product Information */}
-              <Card className="p-6 bg-gradient-to-r from-secondary/50 to-sage-green/10">
-                <CardContent className="p-0">
-                  <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center">
-                    <Building className="h-5 w-5 mr-2 text-leaf-green" />
-                    Product Information
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    Need detailed specifications, size charts, or bulk information? 
-                    We provide comprehensive product details and technical data.
-                  </p>
-                  <div className="space-y-2">
-                    <Button variant="nature" size="sm" className="w-full">
-                      Request Product Information
-                    </Button>
-                    <Button variant="outline" size="sm" className="w-full">
-                      Download Product Catalog
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="p-6 bg-gradient-to-r from-leaf-green/10 to-nature-secondary/20">
-                <CardContent className="p-0">
-                  <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center">
-                    <Users className="h-5 w-5 mr-2 text-leaf-green" />
-                    Customer Support
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    Have questions about our products or need technical support?
-                    Our team is here to help.
-                  </p>
-                  <div className="space-y-2">
-                    <Button variant="hero" size="sm" className="w-full">
-                      Get Support
-                    </Button>
-                    <Button variant="outline" size="sm" className="w-full">
-                      View FAQ
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Sustainability Commitment */}
-              <Card className="p-6 border-dashed border-2 border-leaf-green/30">
-                <CardContent className="p-0 text-center">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    Sustainability Commitment
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    Learn more about our environmental mission and how our products 
-                    contribute to a sustainable future.
-                  </p>
-                  <Button variant="outline" size="sm">
-                    Learn About Benefits
-                  </Button>
-                </CardContent>
-              </Card>
             </div>
           </div>
 

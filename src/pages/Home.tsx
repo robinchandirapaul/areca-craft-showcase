@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Leaf, Recycle, Award, Users } from "lucide-react";
-import heroImage from "@/assets/hero-areca-products.jpg";
+import heroImage from "@/assets/dine-on-mine-banner.png";
 import leavesImage from "@/assets/areca-leaves-natural.jpg";
 
 const Home = () => {
@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
+      <section
         className="relative h-screen bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
@@ -43,14 +43,14 @@ const Home = () => {
               Sustainable <span className="text-sage-green">Areca Leaf</span> Products
             </h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              Eco-friendly disposable tableware made from naturally fallen areca palm leaves. 
+              Eco-friendly disposable tableware made from naturally fallen areca palm leaves.
               Beautiful, durable, and completely biodegradable.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="lg">
                 <Link to="/products">View Products</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-nature-primary">
+              <Button asChild variant="outline" size="lg" className="border-primary-foreground hover:bg-primary-foreground hover:text-nature-primary">
                 <Link to="/about">Learn More</Link>
               </Button>
             </div>
@@ -66,11 +66,11 @@ const Home = () => {
               Why Choose Areca Leaf Products?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our products combine sustainability with functionality, offering the perfect 
+              Our products combine sustainability with functionality, offering the perfect
               alternative to plastic and paper disposables.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow duration-300">
@@ -100,13 +100,13 @@ const Home = () => {
                 From Nature, For Nature
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Areca leaves naturally fall from palm trees throughout the year. Instead of 
-                letting them decompose on the ground, we collect these leaves and transform 
+                Areca leaves naturally fall from palm trees throughout the year. Instead of
+                letting them decompose on the ground, we collect these leaves and transform
                 them into beautiful, functional tableware.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Our production process is completely chemical-free, using only water, heat, 
-                and pressure to shape the leaves into various products. This ensures that 
+                Our production process is completely chemical-free, using only water, heat,
+                and pressure to shape the leaves into various products. This ensures that
                 our products are safe for food contact and completely biodegradable.
               </p>
               <Button asChild variant="nature" size="lg">
@@ -131,7 +131,7 @@ const Home = () => {
             Explore Our Sustainable Range
           </h2>
           <p className="text-xl text-primary-foreground/90 mb-8">
-            Join thousands of conscious consumers who have chosen sustainable alternatives. 
+            Join thousands of conscious consumers who have chosen sustainable alternatives.
             Discover our eco-friendly product range.
           </p>
           <Button asChild size="lg" className="bg-primary-foreground text-nature-primary hover:bg-primary-foreground/90">

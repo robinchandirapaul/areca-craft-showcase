@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Leaf } from "lucide-react";
+import "@/../src/custom.css"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,8 +24,13 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Leaf className="h-8 w-8 text-leaf-green" />
-            <span className="font-bold text-xl text-foreground">EcoLeaf</span>
+            {/* <Leaf className="h-8 w-8 text-leaf-green" />
+            <span className="font-bold text-xl text-foreground">EcoLeaf</span> */}
+            <img
+              src="/src/assets/dinemine.png"
+              alt="EcoLeaf Logo"
+              className="main-logo object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -33,11 +39,10 @@ const Navigation = () => {
               <Link
                 key={item.to}
                 to={item.to}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  isActive(item.to)
-                    ? "text-leaf-green"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={`text-sm font-medium transition-colors duration-200 ${isActive(item.to)
+                  ? "text-leaf-green"
+                  : "text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 {item.label}
               </Link>
@@ -64,11 +69,10 @@ const Navigation = () => {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                    isActive(item.to)
-                      ? "text-leaf-green bg-secondary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${isActive(item.to)
+                    ? "text-leaf-green bg-secondary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
