@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Leaf } from "lucide-react";
-import "@/../src/custom.css"
+import "@/../src/custom.css";
+import logo from "@/assets/dine-mine-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,7 @@ const Navigation = () => {
             {/* <Leaf className="h-8 w-8 text-leaf-green" />
             <span className="font-bold text-xl text-foreground">EcoLeaf</span> */}
             <img
-              src="/src/assets/dinemine.png"
+              src={logo}
               alt="EcoLeaf Logo"
               className="main-logo object-contain"
             />
