@@ -40,7 +40,7 @@ const Home = () => {
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
-              Sustainable <span className="text-sage-green">Areca Leaf</span> Products
+              Sustainable <span className="text-sage-green">Palm Leaf</span> and <span className="text-sage-green">Siali Leaf</span> Products
             </h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
               Eco-friendly disposable tableware made from naturally fallen areca palm leaves.

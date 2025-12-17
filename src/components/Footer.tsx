@@ -10,7 +10,8 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Leaf className="h-8 w-8" />
-              <span className="font-bold text-xl">EcoLeaf</span>
+              {/* <span className="font-bold text-xl">EcoLeaf</span> */}
+              <span className="font-bold text-xl">DINE ON MINE</span>
             </div>
             <p className="text-primary-foreground/80">
               Sustainable areca leaf products for a greener future.
@@ -50,7 +51,7 @@ const Footer = () => {
             <ul className="space-y-2 text-primary-foreground/80">
               <li>Disposable Plates</li>
               <li>Bowls & Containers</li>
-              <li>Cups & Glasses</li>
+              {/* <li>Cups & Glasses</li> */}
               <li>Serving Trays</li>
             </ul>
           </div>
@@ -77,7 +78,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/80">
-            © 2024 EcoLeaf. All rights reserved. Made with 🌱 for the planet.
+            © {new Date().getFullYear()} Dine on mine. All rights reserved. Made with 🌱 for the planet.
           </p>
         </div>
       </div>
