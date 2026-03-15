@@ -62,15 +62,15 @@ const Footer = () => {
             <div className="space-y-2 text-primary-foreground/80">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span>info@ecoleaf.com</span>
+                <span>jeevanathans36@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 7904359390</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" />
-                <span>123 Green Street, Eco City</span>
+                <span>12/7, RS road,<br />Nehruji nagar, Sethukarai,<br />Gudiyattam, Vellore district,<br />Tamilnadu, Pin - 632602.</span>
               </div>
             </div>
           </div>

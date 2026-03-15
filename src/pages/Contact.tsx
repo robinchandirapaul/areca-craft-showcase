@@ -5,11 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
   MessageSquare,
   Send,
   Building,
@@ -29,47 +29,47 @@ const Contact = () => {
     inquiryType: "general"
   });
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch("http://localhost/contact-api/contact.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    const result = await response.json();
-
-    if (result.success) {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+    try {
+      const response = await fetch("http://localhost/contact-api/contact.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        subject: "",
-        message: "",
-        inquiryType: "general"
-      });
-    } else {
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          subject: "",
+          message: "",
+          inquiryType: "general"
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: result.message || "Something went wrong.",
+        });
+      }
+    } catch (error) {
       toast({
         title: "Error",
-        description: result.message || "Something went wrong.",
+        description: "Unable to reach the server.",
       });
     }
-  } catch (error) {
-    toast({
-      title: "Error",
-      description: "Unable to reach the server.",
-    });
-  }
-};
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -79,19 +79,19 @@ const handleSubmit = async (e: React.FormEvent) => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email Us",
-      details: ["info@ecoleaf.com", "sales@ecoleaf.com"],
+      details: ["jeevanathans36@gmail.com",],
       action: "Send Email"
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Call Us",
-      details: ["+1 (555) 123-4567", "+1 (555) 123-4568"],
+      details: ["+91 7904359390",],
       action: "Call Now"
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Visit Us",
-      details: ["123 Green Street", "Eco City, EC 12345"],
+      details: ["12/7, RS road", "Gudiyattam, Vellore district", "Tamilnadu, Pin - 632602."],
       action: "Get Directions"
     },
     {
@@ -113,7 +113,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
-      <section 
+      <section
         className="relative h-96 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${contactHero})` }}
       >
@@ -124,7 +124,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               Get In Touch
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
-              Want to learn more about our sustainable products? Have questions about specifications? 
+              Want to learn more about our sustainable products? Have questions about specifications?
               We're here to help you with all your eco-friendly tableware needs.
             </p>
           </div>
@@ -279,7 +279,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               <CardContent className="p-0">
                 <h3 className="text-2xl font-bold mb-4">Our Response Promise</h3>
                 <p className="text-lg text-primary-foreground/90 mb-6">
-                  We understand that your time is valuable. That's why we commit to responding 
+                  We understand that your time is valuable. That's why we commit to responding
                   to all inquiries within 24 hours during business days.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
