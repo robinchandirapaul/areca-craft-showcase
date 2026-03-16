@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- background -->
+  <rect width="64" height="64" rx="12" fill="#f5efe6"/>
+
+  <!-- plate -->
+  <circle cx="32" cy="36" r="16" fill="#8B5A2B"/>
+
+  <!-- plate highlight -->
+  <circle cx="32" cy="36" r="12" fill="none" stroke="#b07a3c" stroke-width="2"/>
+
+  <!-- eco leaf -->
+  <path d="M32 16 C26 14 22 18 24 22 C28 21 30 20 32 18 Z" fill="#4CAF50"/>
+  <path d="M32 16 C38 14 42 18 40 22 C36 21 34 20 32 18 Z" fill="#4CAF50"/>
+
+  <!-- leaf stem -->
+  <rect x="31" y="18" width="2" height="6" fill="#4CAF50"/>
+</svg>
