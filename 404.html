@@ -3,14 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        // Store the redirect path in sessionStorage
-        var l = window.location;
-        sessionStorage.redirect = l.pathname + l.search + l.hash;
-        // Redirect to home page
-        if (l.pathname !== '/') {
-            window.history.replaceState(null, null, '/');
+    <title></title>
+    <script>
+        // Redirect SPA 404s to the root index.html
+        var segment = /(\/[^.]+)+$/g;
+        if (segment.test(location.pathname)) {
+            location.replace('/index.html?p=' + location.pathname.slice(1));
         }
     </script>
 </head>
