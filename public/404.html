@@ -5,17 +5,12 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script type="text/javascript">
-        // GitHub Pages SPA routing fix
+        // GitHub Pages SPA routing fix - redirect using query parameter
         var l = window.location;
-        var path = l.pathname.slice(1);
-
-        // Only redirect if not on root
-        if (path) {
-            sessionStorage.redirect = '/' + path + (l.search || '') + (l.hash || '');
-            // Small delay to ensure sessionStorage is set before reload
-            setTimeout(function () {
-                window.location.href = '/';
-            }, 50);
+        if (l.pathname !== '/') {
+            // Encode the full path and redirect with it as a param
+            var redirectUrl = '/?redirect=' + encodeURIComponent(l.pathname + l.search + l.hash);
+            window.location.replace(redirectUrl);
         }
     </script>
 </head>
