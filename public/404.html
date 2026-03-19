@@ -3,14 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        // GitHub Pages SPA routing fix - redirect using query parameter
-        var l = window.location;
-        if (l.pathname !== '/') {
-            // Encode the full path and redirect with it as a param
-            var redirectUrl = '/?redirect=' + encodeURIComponent(l.pathname + l.search + l.hash);
-            window.location.replace(redirectUrl);
+    <title></title>
+    <script>
+        // Redirect SPA 404s to the root index.html
+        var segment = /(\/[^.]+)+$/g;
+        if (segment.test(location.pathname)) {
+            location.replace('/index.html?p=' + location.pathname.slice(1));
         }
     </script>
 </head>
