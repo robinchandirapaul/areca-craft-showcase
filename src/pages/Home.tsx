@@ -63,10 +63,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose Areca Leaf Products?
+              Why Choose Our Leaf Products?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our products combine sustainability with functionality, offering the perfect
+              Our Areca and Siali leaf products combine sustainability with functionality, offering the perfect
               alternative to plastic and paper disposables.
             </p>
           </div>
@@ -100,13 +100,12 @@ const Home = () => {
                 From Nature, For Nature
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Areca leaves naturally fall from palm trees throughout the year. Instead of
-                letting them decompose on the ground, we collect these leaves and transform
+                We work with two exceptional natural materials: Areca and Siali leaves. Areca leaves naturally fall from palm trees throughout the year, while Siali leaves are carefully harvested from the Siali tree. Instead of letting them decompose or go to waste, we collect these leaves and transform
                 them into beautiful, functional tableware.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
                 Our production process is completely chemical-free, using only water, heat,
-                and pressure to shape the leaves into various products. This ensures that
+                and pressure to shape the leaves into various products. Each material is reinforced with eco-friendly techniques to ensure superior durability without compromising sustainability. This ensures that
                 our products are safe for food contact and completely biodegradable.
               </p>
               <Button asChild variant="nature" size="lg">

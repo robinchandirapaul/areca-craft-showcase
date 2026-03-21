@@ -2,12 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { 
-  Leaf, 
-  Droplets, 
-  Thermometer, 
-  Shield, 
-  Clock, 
+import {
+  Leaf,
+  Droplets,
+  Thermometer,
+  Shield,
+  Clock,
   Recycle,
   Heart,
   Globe
@@ -122,7 +122,7 @@ const Benefits = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
-      <section 
+      <section
         className="relative h-96 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${benefitsHero})` }}
       >
@@ -130,10 +130,10 @@ const Benefits = () => {
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              Why Choose Areca Leaf Products?
+              Why Choose Our Leaf Products?
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
-              Discover the comprehensive benefits of switching to areca leaf products - 
+              Discover the comprehensive benefits of switching to areca and siali leaf products -
               for your health, your business, and our planet.
             </p>
           </div>
@@ -238,7 +238,7 @@ const Benefits = () => {
                       <th className="text-left p-4 font-semibold text-foreground">Feature</th>
                       <th className="text-center p-4 font-semibold text-foreground">Plastic</th>
                       <th className="text-center p-4 font-semibold text-foreground">Paper</th>
-                      <th className="text-center p-4 font-semibold text-foreground bg-leaf-green/20">Areca Leaf</th>
+                      <th className="text-center p-4 font-semibold text-foreground bg-leaf-green/20">Areca & Siali Leaf</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -60,7 +60,7 @@ const About = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
-      <section 
+      <section
         className="relative h-96 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${aboutHero})` }}
       >
@@ -71,7 +71,7 @@ const About = () => {
               Our Story
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
-              Born from a passion for environmental conservation and a commitment to sustainable living, 
+              Born from a passion for environmental conservation and a commitment to sustainable living,
               EcoLeaf transforms natural waste into beautiful, functional products.
             </p>
           </div>
@@ -87,17 +87,17 @@ const About = () => {
                 Our Mission
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                To revolutionize the disposable tableware industry by providing 100% natural, 
+                To revolutionize the disposable tableware industry by providing 100% natural,
                 biodegradable alternatives that don't compromise on quality or aesthetics.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Every year, millions of areca palm leaves fall naturally and are often burned as waste. 
-                We saw an opportunity to transform this agricultural byproduct into something valuable 
-                and environmentally beneficial.
+                Every year, millions of areca palm leaves and siali tree leaves are naturally shed or available as sustainable harvest.
+                We saw an opportunity to transform this agricultural byproduct into something valuable
+                and environmentally beneficial. Each material is reinforced with high-quality eco-friendly backing for superior durability in professional and everyday use.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Our chemical-free manufacturing process ensures that every product is safe for food contact 
-                while maintaining the natural properties that make areca leaves so special.
+                Our chemical-free manufacturing process ensures that every product is safe for food contact
+                while maintaining the natural properties that make areca and siali leaves so special.
               </p>
               <Button asChild variant="nature" size="lg">
                 <Link to="/products">See Our Products</Link>
@@ -153,14 +153,13 @@ const About = () => {
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-sage-green/30 hidden lg:block" />
-            
+
             <div className="space-y-8">
               {timeline.map((item, index) => (
                 <div
                   key={index}
-                  className={`flex items-center ${
-                    index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  }`}
+                  className={`flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                    }`}
                 >
                   <div className={`w-full lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'}`}>
                     <Card className="p-6">
@@ -179,10 +178,10 @@ const About = () => {
                       </CardContent>
                     </Card>
                   </div>
-                  
+
                   {/* Timeline dot */}
                   <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-leaf-green rounded-full border-4 border-background shadow-lg" />
-                  
+
                   <div className="w-full lg:w-1/2" />
                 </div>
               ))}
@@ -211,7 +210,7 @@ const About = () => {
               </div>
             </div>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Together with our customers and partners, we're making a measurable difference 
+              Together with our customers and partners, we're making a measurable difference
               in reducing plastic waste and supporting sustainable livelihoods.
             </p>
             <Button asChild variant="hero" size="lg">

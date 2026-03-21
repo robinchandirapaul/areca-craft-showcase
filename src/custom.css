@@ -1,6 +1,6 @@
 .main-logo {
-    height: 20%;
-    width: 20%;
+    height: 66px;
+    width: auto;
     will-change: filter;
     transition: filter 300ms;
 }

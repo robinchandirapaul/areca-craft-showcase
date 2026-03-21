@@ -13,9 +13,15 @@ const Footer = () => {
               {/* <span className="font-bold text-xl">EcoLeaf</span> */}
               <span className="font-bold text-xl">DINE ON MINE</span>
             </div>
-            <p className="text-primary-foreground/80">
-              Sustainable areca leaf products for a greener future.
+            <p className="text-sage-green font-semibold text-sm">
+              Where nature meets the table
             </p>
+            <p className="text-primary-foreground/80">
+              Dine on mine is dedicated to providing sustainable, eco-friendly leaf products that help reduce plastic waste and promote a greener lifestyle.
+            </p>
+            {/* <p className="text-primary-foreground/80">
+              Sustainable leaf products for a greener future.
+            </p> */}
           </div>
 
           {/* Quick Links */}
@@ -79,6 +85,12 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/80">
             © {new Date().getFullYear()} Dine on mine. All rights reserved. Made with 🌱 for the planet.
+          </p>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-primary-foreground/60 text-sm font-medium italic">
+            Serve green, live clean
           </p>
         </div>
       </div>
