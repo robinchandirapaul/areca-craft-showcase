@@ -29,7 +29,7 @@ const Navigation = () => {
             <span className="font-bold text-xl text-foreground">EcoLeaf</span> */}
             <img
               src={logo}
-              alt="EcoLeaf Logo"
+              alt="Areca & Siali Craft Showcase Logo"
               className="main-logo object-contain"
             />
           </Link>
@@ -79,6 +79,26 @@ const Navigation = () => {
                   {item.label}
                 </Link>
               ))}
+
+              <div className="mt-2 border-t border-border pt-2">
+                <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Products
+                </p>
+                <Link
+                  to="/products?tab=areca"
+                  className="block px-6 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Areca Plates
+                </Link>
+                <Link
+                  to="/products?tab=siali"
+                  className="block px-6 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Siali Plates
+                </Link>
+              </div>
             </div>
           </div>
         )}

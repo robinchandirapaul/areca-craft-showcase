@@ -1,22 +1,14 @@
-# Welcome to your Lovable project
+# Areca & Siali Craft Showcase
 
-## Project info
-
-**URL**: https://lovable.dev/projects/d1449325-0c46-4395-8757-7a4e4fc4e87c
+A sustainable eco-friendly product showcase featuring handcrafted areca and siali leaf tableware.
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/d1449325-0c46-4395-8757-7a4e4fc4e87c) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
+Several options are available for editing your application.
 
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Clone the repo and work locally using your favorite code editor.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -62,12 +54,21 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/d1449325-0c46-4395-8757-7a4e4fc4e87c) and click on Share -> Publish.
+Deploy this project to your hosting provider of choice (Vercel, Netlify, GitHub Pages, etc.). Ensure your production domain is set in the canonical meta tag in `index.html`.
 
-## Can I connect a custom domain to my Lovable project?
+Recommended deployment platforms:
+- **Vercel**: Simple integration with GitHub, automatic deployments on push
+- **Netlify**: Drag-and-drop deployment with built-in CI/CD
+- **GitHub Pages**: Free static hosting directly from your repository
 
-Yes, you can!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+steps to deploy code 
+
+
+
+git add .
+git commit -a -m "updated products section"
+git push origin branchname
+npm run deploy

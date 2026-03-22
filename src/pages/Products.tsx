@@ -1,7 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Link, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import productsHero from "@/assets/products-hero.jpg";
 import productsImage from "@/assets/dine-on-mine-products.png";
 import sixSquare from "@/assets/6-Square.png";
@@ -307,48 +309,137 @@ const Products = () => {
       features: ["Leak-proof", "Microwave safe", "Oil resistant"],
       image: twentyfiveml,
       boxSize: "56.5*43*28.5"
-    },
-
-    // {
-    //   title: "Bowls & Containers",
-    //   description: "Eco-friendly bowls and containers for soups, salads, and meals",
-    //   sizes: [
-    //     "6\" Heart Bowl",
-    //     "5.5\" Deep Square (Soup Bowl)",
-    //     "7\" Deep Round (Salad Bowl)",
-    //     "6\" x 5\" Rectangle Bowl",
-    //     "4\" Square Bowl",
-    //     "4\" Shallow Round Bowl",
-    //     "5\" Round Bowl"
-    //   ],
-    //   features: ["Deep design", "Stackable", "Freezer safe"],
-    //   image: bowlSizes
-    // },
-    // {
-    //   title: "Sauce Bowls",
-    //   description: "Small portion bowls for sauces, chutneys, and dips",
-    //   sizes: [
-    //     "25ml Sauce Bowl",
-    //     "40ml Sauce Bowl",
-    //     "50ml Sauce Bowl",
-    //     "70ml Sauce Bowl"
-    //   ],
-    //   features: ["Compact size", "Convenient serving", "Eco-friendly"]
-    // },
-    // {
-    //   title: "Cups & Glasses",
-    //   description: "Eco-friendly cups for hot and cold beverages",
-    //   sizes: ["4 oz", "6 oz", "8 oz", "12 oz"],
-    //   features: ["Heat resistant", "Comfortable grip", "Biodegradable"]
-    // },
-    // {
-    //   title: "Serving Trays",
-    //   description: "Large trays perfect for parties and catering",
-    //   sizes: ["Medium (12x8 inch)", "Large (16x12 inch)", "XL (20x14 inch)"],
-    //   features: ["Heavy duty", "Elegant design", "Party ready"]
-    // }
+    }
   ];
 
+  const arecaProductCategories = productCategories;
+  const sialiProductCategories = productCategories.map((product) => ({
+    ...product,
+    title: `${product.title} (Siali)`
+  }));
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialTab = searchParams.get("tab") === "siali" ? "siali" : "areca";
+  const [activeTab, setActiveTab] = useState<"areca" | "siali">(initialTab);
+
+  useEffect(() => {
+    const queryTab = searchParams.get("tab");
+    if (queryTab === "areca" || queryTab === "siali") {
+      setActiveTab(queryTab);
+    }
+  }, [searchParams]);
+
+  const onTabChange = (value: string) => {
+    const nextTab = value === "siali" ? "siali" : "areca";
+    setActiveTab(nextTab);
+    setSearchParams({ tab: nextTab });
+  };
+
+  const renderProductGrid = (products: typeof productCategories) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {products.map((product, index) => (
+        <Card key={`${product.title}-${index}`} className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-foreground flex items-center justify-between">
+              {product.title}
+              <Badge variant="secondary" className="bg-sage-green text-foreground">
+                Eco-Friendly
+              </Badge>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {product.image && (
+              <div className="relative h-48 rounded-lg overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={`${product.title} sizes`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+
+            <p className="text-muted-foreground">{product.description}</p>
+
+            {/* <div className="flex flex-row gap-6">
+              <div className="w-1/2">
+                <h4 className="font-semibold text-foreground mb-2">Available Sizes:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {product.sizes.map((size, idx) => (
+                    <Badge key={idx} variant="outline">
+                      {size}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              <div className="w-1/2">
+                <h4 className="font-semibold text-foreground mb-2">No of boxes:</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">{product.noOfBoxes}</Badge>
+                </div>
+              </div>
+            </div> */}
+
+            <div className="flex flex-row gap-6">
+              <div className="w-1/2">
+                <h4 className="font-semibold text-foreground mb-2">No of pieces per box:</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">{product.noOfPiecesPerBox}</Badge>
+                </div>
+              </div>
+
+              <div className="w-1/2">
+                <h4 className="font-semibold text-foreground mb-2">Cubic meter per box:</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">{product.cubicMeterPerBox}</Badge>
+                </div>
+              </div>
+            </div>
+
+            {/* <div className="flex flex-row gap-6">
+              <div className="w-1/2">
+                <h4 className="font-semibold text-foreground mb-2">Total cubic meter:</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">{product.totalCubicMeter}</Badge>
+                </div>
+              </div>
+
+              <div className="w-1/2">
+                <h4 className="font-semibold text-foreground mb-2">Quantity (Nos):</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">{product.quantity}</Badge>
+                </div>
+              </div>
+            </div> */}
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Box Sizes:</h4>
+              <div className="flex flex-wrap gap-2">
+                {(() => {
+                  const boxSizes = Array.isArray(product.boxSize)
+                    ? product.boxSize
+                    : product.boxSize
+                      ? [product.boxSize]
+                      : [];
+                  return boxSizes.map((size, idx) => (
+                    <Badge key={idx} variant="outline">
+                      {size}
+                    </Badge>
+                  ));
+                })()}
+              </div>
+            </div>
+
+            <div className="pt-4">
+              <Button asChild variant="nature" size="sm" className="w-full">
+                <Link to="/contact">Get Information</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
 
   return (
     <div className="min-h-screen">
@@ -390,167 +481,119 @@ const Products = () => {
 
         {/* Product Grid */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {productCategories.map((product, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl text-foreground flex items-center justify-between">
-                    {product.title}
-                    <Badge variant="secondary" className="bg-sage-green text-foreground">
-                      Eco-Friendly
-                    </Badge>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {product.image && (
-                    <div className="relative h-48 rounded-lg overflow-hidden">
-                      <img
-                        src={product.image}
-                        alt={`${product.title} sizes`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
+          <Tabs value={activeTab} onValueChange={onTabChange} className="space-y-4">
+            <TabsList>
+              <TabsTrigger value="areca">Areca Plates</TabsTrigger>
+              <TabsTrigger value="siali">Siali Plates</TabsTrigger>
+            </TabsList>
+            <TabsContent value="areca">
+              <div className="text-center mb-8">
+                <p className="text-muted-foreground mb-2">
+                  Areca leaf plates are made from the leaves of the Areca palm tree, offering a natural and biodegradable alternative to plastic disposables.
+                  Known for their strength, flexibility, and eco-friendly properties, these plates are perfect for serving food while being completely compostable.
+                </p>
+              </div>
+              {renderProductGrid(arecaProductCategories)}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-foreground text-lg">Key Features</h4>
+                  <ul className="text-muted-foreground space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">✓</span>
+                      <span><strong>100% Natural & Chemical-Free:</strong> Pure areca leaf material, safe for food contact</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">✓</span>
+                      <span><strong>Strength & Flexibility:</strong> Durable yet flexible for everyday dining and serving</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">✓</span>
+                      <span><strong>Heat & Leak Resistant:</strong> Ideal for hot and liquid foods without compromise</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">✓</span>
+                      <span><strong>Fully Biodegradable:</strong> Completely compostable in 30-45 days naturally</span>
+                    </li>
+                  </ul>
+                </div>
 
-                  <p className="text-muted-foreground">
-                    {product.description}
-                  </p>
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-foreground text-lg">Perfect For</h4>
+                  <ul className="text-muted-foreground space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">★</span>
+                      <span><strong>Everyday Dining:</strong> Ideal for daily meals and gatherings</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">★</span>
+                      <span><strong>Natural Presentation:</strong> Beautiful, eco-conscious appearance</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">★</span>
+                      <span><strong>Lightweight & Durable:</strong> Easy to handle yet sturdy</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">★</span>
+                      <span><strong>Eco-Friendly Choice:</strong> Sustainable alternative to plastic</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="siali">
+              <div className="text-center mb-8">
+                <p className="text-muted-foreground mb-2">
+                  Siali leaf plates are crafted from carefully selected siali leaves, finely stitched and reinforced with high-quality corrugated 3-ply sheets. Using precision molding, we ensure a uniform structure, superior finish, and dependable sturdiness—perfectly suited for professional catering and buffet applications.
+                </p>
+              </div>
+              {renderProductGrid(sialiProductCategories)}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-foreground text-lg">Premium Features</h4>
+                  <ul className="text-muted-foreground space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">✓</span>
+                      <span><strong>100% Natural & Chemical-Free:</strong> Pure siali leaf material with superior safety standards</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">✓</span>
+                      <span><strong>High Strength & Stability:</strong> Reinforced backing for excellent load-bearing capacity</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">✓</span>
+                      <span><strong>Heat & Leak Resistant:</strong> Perfect for serving hot and semi-liquid foods</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">✓</span>
+                      <span><strong>Fully Biodegradable:</strong> Naturally decomposes supporting sustainable waste management</span>
+                    </li>
+                  </ul>
+                </div>
 
-                  {/* <div>
-                    <h4 className="font-semibold text-foreground mb-2">Available Sizes:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {product.sizes.map((size, idx) => (
-                        <Badge key={idx} variant="outline">
-                          {size}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">No of boxes:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="outline">
-                        {product.noOfBoxes}
-                      </Badge>
-                    </div>
-                  </div> */}
-
-                  <div className="flex flex-row gap-6">
-                    <div className="w-1/2">
-                      <h4 className="font-semibold text-foreground mb-2">
-                        Available Sizes:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {product.sizes.map((size, idx) => (
-                          <Badge key={idx} variant="outline">
-                            {size}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="w-1/2">
-                      <h4 className="font-semibold text-foreground mb-2">
-                        No of boxes:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="outline">
-                          {product.noOfBoxes}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-row gap-6">
-                    <div className="w-1/2">
-                      <h4 className="font-semibold text-foreground mb-2">
-                        No of pieces per box:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="outline">
-                          {product.noOfPiecesPerBox}
-                        </Badge>
-                      </div>
-                    </div>
-
-                    <div className="w-1/2">
-                      <h4 className="font-semibold text-foreground mb-2">
-                        Cubic meter per box:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="outline">
-                          {product.cubicMeterPerBox}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-row gap-6">
-                    <div className="w-1/2">
-                      <h4 className="font-semibold text-foreground mb-2">
-                        Total cubic meter:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="outline">
-                          {product.totalCubicMeter}
-                        </Badge>
-                      </div>
-                    </div>
-
-                    <div className="w-1/2">
-                      <h4 className="font-semibold text-foreground mb-2">
-                        Quantity (Nos):
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="outline">
-                          {product.quantity}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-
-
-
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Box Sizes:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {(() => {
-                        const boxSizes = Array.isArray(product.boxSize)
-                          ? product.boxSize
-                          : product.boxSize
-                            ? [product.boxSize]
-                            : [];
-                        return boxSizes.map((size, idx) => (
-                          <Badge key={idx} variant="outline">
-                            {size}
-                          </Badge>
-                        ));
-                      })()}
-                    </div>
-                  </div>
-
-                  {/* <div>
-                    <h4 className="font-semibold text-foreground mb-2">Key Features:</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {product.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center">
-                          <span className="w-2 h-2 bg-leaf-green rounded-full mr-2" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div> */}
-
-                  <div className="pt-4">
-                    <Button asChild variant="nature" size="sm" className="w-full">
-                      <Link to="/contact">Get Information</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-foreground text-lg">Designed for Performance</h4>
+                  <ul className="text-muted-foreground space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">★</span>
+                      <span><strong>Buffet-Ready Durability:</strong> Built to handle professional catering demands</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">★</span>
+                      <span><strong>Refined Natural Aesthetic:</strong> Premium presentation for events and dining</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">★</span>
+                      <span><strong>Consistent Quality Finish:</strong> Precision-pressed for professional appearance</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-leaf-green mr-3">★</span>
+                      <span><strong>Custom Solutions:</strong> Available in custom shapes and sizes per requirements</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
 
         {/* Product Information Section */}

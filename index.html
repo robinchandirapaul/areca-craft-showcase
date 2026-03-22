@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EcoLeaf - Sustainable Areca Leaf Products | Eco-Friendly Disposable Tableware</title>
-    <meta name="description" content="Premium eco-friendly disposable tableware made from natural areca leaves. 100% biodegradable plates, bowls, cups & containers. Sustainable alternative to plastic." />
-    <meta name="author" content="EcoLeaf" />
-    <meta name="keywords" content="areca leaf products, eco-friendly tableware, biodegradable plates, sustainable disposables, natural dinnerware" />
 
-    <meta property="og:title" content="EcoLeaf - Sustainable Areca Leaf Products" />
-    <meta property="og:description" content="Premium eco-friendly disposable tableware made from natural areca leaves. 100% biodegradable & sustainable." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://dineonmine.com/" />
+  <title>Areca & Siali Craft Showcase - Sustainable Leaf Tableware</title>
+  <meta name="description"
+    content="Discover Areca and Siali leaf craft products: handcrafted, 100% biodegradable plates, bowls, trays, and tableware for eco-friendly living and zero-waste events." />
+  <meta name="author" content="Areca Siali Craft" />
+  <meta name="keywords"
+    content="areca leaf products, siali leaf products, eco-friendly tableware, biodegradable plates, sustainable dining, natural disposable tableware, handcrafted leaf crafts" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+  <meta property="og:title" content="Areca & Siali Craft Showcase - Sustainable Leaf Tableware" />
+  <meta property="og:description"
+    content="Explore premium biodegradable areca and siali leaf tableware made from natural leaf waste. Stylish, sturdy, compostable products for zero-waste gatherings." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/meta-image-areca-siali.png" />
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@areca_craft" />
+  <meta name="twitter:image" content="/assets/meta-image-areca-siali.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DXM9NZ4H8L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-DXM9NZ4H8L');
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    // Restore the original path from 404.html redirect
+    (function () {
+      var redirect = sessionStorage.getItem('redirect');
+      sessionStorage.removeItem('redirect');
+      if (redirect && redirect !== location.pathname) {
+        // Use replaceState to update URL without triggering navigation
+        window.history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>
