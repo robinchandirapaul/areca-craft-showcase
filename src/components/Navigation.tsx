@@ -29,7 +29,7 @@ const Navigation = () => {
             <span className="font-bold text-xl text-foreground">EcoLeaf</span> */}
             <img
               src={logo}
-              alt="EcoLeaf Logo"
+              alt="Areca & Siali Craft Showcase Logo"
               className="main-logo object-contain"
             />
           </Link>

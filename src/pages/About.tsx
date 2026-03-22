@@ -72,7 +72,7 @@ const About = () => {
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
               Born from a passion for environmental conservation and a commitment to sustainable living,
-              EcoLeaf transforms natural waste into beautiful, functional products.
+              Areca & Siali Craft transforms natural leaf waste into beautiful, functional, biodegradable products.
             </p>
           </div>
         </div>
