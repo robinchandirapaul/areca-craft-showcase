@@ -12,12 +12,15 @@ import About from "./pages/About";
 import Benefits from "./pages/Benefits";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import usePageTracking from "./hooks/usePageTracking";
 
 const queryClient = new QueryClient();
 
 // Scroll to top component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+
+  usePageTracking();
 
   useEffect(() => {
     window.scrollTo(0, 0);
