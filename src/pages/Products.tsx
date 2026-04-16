@@ -22,9 +22,30 @@ import fourSquareBowl from "@/assets/4-Square-Bowl.png";
 import fourShallowRoundBowl from "@/assets/70ml-sauce-bowl.png";
 import fiveShallowRoundBowl from "@/assets/5-Round-Bowl.png";
 import twentyfiveml from "@/assets/25ml-sauce-bowl.png";
+import sixteenInchSiali from "@/assets/16inch-siali.png";
+import fourteenInchSiali from "@/assets/14inch-siali.png";
+import thirteenInchSiali from "@/assets/13inch-siali.png";
+import twelveInchSiali from "@/assets/12inch-siali.png";
+import tenInchSiali from "@/assets/10inch-siali.png";
+import eightInchSiali from "@/assets/8inch-siali.png";
 // import bowlSizes from "@/assets/bowl-sizes.png";
+
+type ProductCategory = {
+  title: string;
+  description: string;
+  sizes: string[];
+  noOfBoxes: string;
+  noOfPiecesPerBox?: string;
+  cubicMeterPerBox?: string;
+  totalCubicMeter?: string;
+  quantity: string;
+  features: string[];
+  image?: string;
+  boxSize?: string | string[];
+};
+
 const Products = () => {
-  const productCategories = [
+  const productCategories: ProductCategory[] = [
     {
       title: "6\" Square",
       description: "Various sizes of square, round, and rectangle plates perfect for any occasion",
@@ -313,10 +334,62 @@ const Products = () => {
   ];
 
   const arecaProductCategories = productCategories;
-  const sialiProductCategories = productCategories.map((product) => ({
-    ...product,
-    title: `${product.title} (Siali)`
-  }));
+  const sialiProductCategories: ProductCategory[] = [
+    {
+      title: "16\" Round Plate",
+      description: "Ideal for full-course meals and thali-style serving. Designed for maximum capacity and stability in buffet setups.",
+      sizes: ["16\" Round Plate"],
+      noOfBoxes: "20",
+      quantity: "4000",
+      features: ["Leak-proof", "Microwave safe", "Oil resistant"],
+      image: sixteenInchSiali,
+    },
+    {
+      title: "14\" Round Plate",
+      description: "Perfect for large meal portions and heavy servings. Suitable for events, catering, and premium dining use.",
+      sizes: ["14\" Round Plate"],
+      noOfBoxes: "20",
+      quantity: "5000",
+      features: ["Leak-proof", "Microwave safe", "Oil resistant"],
+      image: fourteenInchSiali,
+    },
+    {
+      title: "13\" Round Plate",
+      description: "Balanced size for complete meals with multiple items. A versatile choice for functions and gatherings.",
+      sizes: ["13\" Round Plate"],
+      noOfBoxes: "25",
+      quantity: "7500",
+      features: ["Leak-proof", "Microwave safe", "Oil resistant"],
+      image: thirteenInchSiali,
+    },
+    {
+      title: "12\" Round Plate",
+      description: "Best suited for main course servings like biryani, rice meals, and combo dishes. Strong and reliable for buffet use.",
+      sizes: ["12\" Round Plate"],
+      noOfBoxes: "30",
+      quantity: "9000",
+      features: ["Leak-proof", "Microwave safe", "Oil resistant"],
+      image: twelveInchSiali,
+    },
+    {
+      title: "10\" Round Plate",
+      description: "Ideal for standard meal portions and everyday serving. Widely used for breakfasts, and quick service setups.",
+      sizes: ["10\" Round Plate"],
+      noOfBoxes: "30",
+      quantity: "12000",
+      features: ["Leak-proof", "Microwave safe", "Oil resistant"],
+      image: tenInchSiali,
+    },
+    {
+      title: "8\" Round Plate",
+      description: "Perfect for snacks, starters, desserts, and light servings. Compact, sturdy, and convenient to handle.",
+      sizes: ["8\" Round Plate"],
+      noOfBoxes: "40",
+      quantity: "20000",
+      features: ["Leak-proof", "Microwave safe", "Oil resistant"],
+      image: eightInchSiali,
+    },
+  ];
 
   const [searchParams, setSearchParams] = useSearchParams();
   const initialTab = searchParams.get("tab") === "siali" ? "siali" : "areca";
@@ -380,55 +453,45 @@ const Products = () => {
               </div>
             </div> */}
 
-            <div className="flex flex-row gap-6">
-              <div className="w-1/2">
-                <h4 className="font-semibold text-foreground mb-2">No of pieces per box:</h4>
+            {(product.noOfPiecesPerBox || product.cubicMeterPerBox) && (
+              <div className="flex flex-row gap-6">
+                {product.noOfPiecesPerBox && (
+                  <div className="w-1/2">
+                    <h4 className="font-semibold text-foreground mb-2">No of pieces per box:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline">{product.noOfPiecesPerBox}</Badge>
+                    </div>
+                  </div>
+                )}
+
+                {product.cubicMeterPerBox && (
+                  <div className={product.noOfPiecesPerBox ? "w-1/2" : "w-full"}>
+                    <h4 className="font-semibold text-foreground mb-2">Cubic meter per box:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline">{product.cubicMeterPerBox}</Badge>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {product.boxSize && (
+              <div>
+                <h4 className="font-semibold text-foreground mb-2">Box Sizes:</h4>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">{product.noOfPiecesPerBox}</Badge>
+                  {(() => {
+                    const boxSizes = Array.isArray(product.boxSize)
+                      ? product.boxSize
+                      : [product.boxSize];
+                    return boxSizes.map((size, idx) => (
+                      <Badge key={idx} variant="outline">
+                        {size}
+                      </Badge>
+                    ));
+                  })()}
                 </div>
               </div>
-
-              <div className="w-1/2">
-                <h4 className="font-semibold text-foreground mb-2">Cubic meter per box:</h4>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">{product.cubicMeterPerBox}</Badge>
-                </div>
-              </div>
-            </div>
-
-            {/* <div className="flex flex-row gap-6">
-              <div className="w-1/2">
-                <h4 className="font-semibold text-foreground mb-2">Total cubic meter:</h4>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">{product.totalCubicMeter}</Badge>
-                </div>
-              </div>
-
-              <div className="w-1/2">
-                <h4 className="font-semibold text-foreground mb-2">Quantity (Nos):</h4>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">{product.quantity}</Badge>
-                </div>
-              </div>
-            </div> */}
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Box Sizes:</h4>
-              <div className="flex flex-wrap gap-2">
-                {(() => {
-                  const boxSizes = Array.isArray(product.boxSize)
-                    ? product.boxSize
-                    : product.boxSize
-                      ? [product.boxSize]
-                      : [];
-                  return boxSizes.map((size, idx) => (
-                    <Badge key={idx} variant="outline">
-                      {size}
-                    </Badge>
-                  ));
-                })()}
-              </div>
-            </div>
+            )}
 
             <div className="pt-4">
               <Button asChild variant="nature" size="sm" className="w-full">
